@@ -26,7 +26,7 @@
  unsigned int sysapp_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(void, _SYSLaunchTitleByPathFromLauncher, const char* path, int len, int zero);
-EXPORT_DECL(int, SYSRelaunchTitle, int argc, char* argv);
+EXPORT_DECL(int, SYSRelaunchTitle, int argc, char** argv);
 EXPORT_DECL(int, SYSLaunchMenu, void);
 EXPORT_DECL(int, SYSCheckTitleExists, u64 titleId);
 
