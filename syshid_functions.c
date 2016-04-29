@@ -46,8 +46,6 @@ EXPORT_DECL(int, HIDSetIdle,unsigned int handle, u8 interface_index,u8 duration,
 EXPORT_DECL(int, HIDRead,unsigned int handle, unsigned char *p_buffer, unsigned int buffer_length, HIDCallback hc, void *p_user);
 EXPORT_DECL(int, HIDWrite,unsigned int handle, unsigned char *p_buffer, unsigned int buffer_length, HIDCallback hc, void *p_user);
 
-EXPORT_DECL(int, HIDResetDevice,unsigned int handle, HIDCallback hc, void *p_user);
-
 void InitAcquireSysHID(void)
 {
      OSDynLoad_Acquire("nsyshid.rpl", &syshid_handle);
@@ -72,7 +70,6 @@ void InitSysHIDFunctionPointers(void)
     OS_FIND_EXPORT(syshid_handle, HIDSetDescriptor);
     OS_FIND_EXPORT(syshid_handle, HIDRead);
     OS_FIND_EXPORT(syshid_handle, HIDWrite);
-    OS_FIND_EXPORT(syshid_handle, HIDResetDevice);
     OS_FIND_EXPORT(syshid_handle, HIDSetProtocol);
     OS_FIND_EXPORT(syshid_handle, HIDGetProtocol);
     OS_FIND_EXPORT(syshid_handle, HIDSetIdle);

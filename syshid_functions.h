@@ -80,12 +80,8 @@ extern int(*HIDSetIdle)(unsigned int handle, u8 interface_index,u8 duration, HID
 extern int(* HIDSetProtocol)(unsigned int handle,u8 interface_index,u8 protocol, HIDCallback hc, void *p_user);
 extern int(* HIDGetProtocol)(unsigned int handle,u8 interface_index,u8 * protocol, HIDCallback hc, void *p_user);
 
-
 extern int(*HIDRead)(unsigned int handle, unsigned char *p_buffer, unsigned int buffer_length, HIDCallback hc, void *p_user);
 extern int(*HIDWrite)(unsigned int handle, unsigned char *p_buffer, unsigned int buffer_length, HIDCallback hc, void *p_user);
-
-extern int(*HIDResetDevice)(unsigned int handle, HIDCallback hc, void *p_user);
-
 
 #ifdef __cplusplus
 }
