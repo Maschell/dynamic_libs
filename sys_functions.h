@@ -33,10 +33,11 @@ extern unsigned int sysapp_handle;
 void InitSysFunctionPointers(void);
 void InitAcquireSys(void);
 
-extern void(*_SYSLaunchTitleByPathFromLauncher)(const char* path, int len, int zero);
+extern int(*_SYSLaunchTitleByPathFromLauncher)(const char* path, int len, int zero);
 extern int (* SYSRelaunchTitle)(int argc, char** argv);
 extern int (* SYSLaunchMenu)(void);
 extern int (* SYSCheckTitleExists)(u64 titleId);
+extern int (* SYSLaunchTitle)(u64 titleId);
 
 
 #ifdef __cplusplus
