@@ -50,6 +50,7 @@ EXPORT_DECL(int, OSJoinThread, void * thread, int * ret_val);
 EXPORT_DECL(void, OSDetachThread, void * thread);
 EXPORT_DECL(void, OSSleepTicks, u64 ticks);
 EXPORT_DECL(u64, OSGetTick, void);
+EXPORT_DECL(u64, OSGetTime, void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
@@ -63,6 +64,7 @@ EXPORT_DECL(int, OSTryLockMutex, void* mutex);
 //! System functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EXPORT_DECL(u64, OSGetTitleID, void);
+EXPORT_DECL(void, OSGetArgcArgv, int* argc, char*** argv);
 EXPORT_DECL(void, __Exit, void);
 EXPORT_DECL(void, OSFatal, const char* msg);
 EXPORT_DECL(void, OSSetExceptionCallback, u8 exceptionType, exception_callback newCallback);
@@ -122,6 +124,19 @@ EXPORT_DECL(void, addr_PrepareTitle_hook, void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EXPORT_DECL(void, DCInvalidateRange, void *buffer, uint32_t length);
 
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Energy Saver functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Burn-in Reduction
+EXPORT_DECL(int, IMEnableDim,void);
+EXPORT_DECL(int, IMDisableDim,void);
+EXPORT_DECL(int, IMIsDimEnabled,int * result);
+//Auto power down
+EXPORT_DECL(int, IMEnableAPD,void);
+EXPORT_DECL(int, IMDisableAPD,void);
+EXPORT_DECL(int, IMIsAPDEnabled,int * result);
+EXPORT_DECL(int, IMIsAPDEnabledBySysSettings,int * result);
+
 void InitAcquireOS(void)
 {
       //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,6 +163,7 @@ void InitOSFunctionPointers(void)
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     OS_FIND_EXPORT(coreinit_handle, OSFatal);
     OS_FIND_EXPORT(coreinit_handle, OSGetTitleID);
+    OS_FIND_EXPORT(coreinit_handle, OSGetArgcArgv);
     OS_FIND_EXPORT(coreinit_handle, OSSetExceptionCallback);
     OS_FIND_EXPORT(coreinit_handle, DCFlushRange);
     OS_FIND_EXPORT(coreinit_handle, ICInvalidateRange);
@@ -177,6 +193,7 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, OSDetachThread);
     OS_FIND_EXPORT(coreinit_handle, OSSleepTicks);
     OS_FIND_EXPORT(coreinit_handle, OSGetTick);
+    OS_FIND_EXPORT(coreinit_handle, OSGetTime);
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Mutex functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,6 +228,19 @@ void InitOSFunctionPointers(void)
     //! Other function addresses
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     OS_FIND_EXPORT(coreinit_handle, DCInvalidateRange);
+
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //! Energy Saver functions
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Burn-in Reduction
+    OS_FIND_EXPORT(coreinit_handle, IMEnableDim);
+    OS_FIND_EXPORT(coreinit_handle, IMDisableDim);
+    OS_FIND_EXPORT(coreinit_handle, IMIsDimEnabled);
+    //Auto power down
+    OS_FIND_EXPORT(coreinit_handle, IMEnableAPD);
+    OS_FIND_EXPORT(coreinit_handle, IMDisableAPD);
+    OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabled);
+    OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabledBySysSettings);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Special non library functions

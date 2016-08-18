@@ -92,6 +92,7 @@ extern int (* OSSetThreadPriority)(void * thread, int priority);
 extern void (* OSDetachThread)(void * thread);
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
+extern u64 (* OSGetTime)(void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
@@ -105,6 +106,7 @@ extern int (* OSTryLockMutex)(void* mutex);
 //! System functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern u64 (* OSGetTitleID)(void);
+extern void (* OSGetArgcArgv)(int* argc, char*** argv);
 extern void (* __Exit)(void);
 extern void (* OSFatal)(const char* msg);
 extern void (* DCFlushRange)(const void *addr, u32 length);
@@ -149,6 +151,19 @@ extern void (* addr_PrepareTitle_hook)(void);
 //! Other function addresses
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern void (*DCInvalidateRange)(void *buffer, uint32_t length);
+
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Energy Saver functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+////Burn-in Reduction
+extern int (*IMEnableDim)(void);
+extern int (*IMDisableDim)(void);
+extern int (*IMIsDimEnabled)(int * result);
+//Auto power down
+extern int (*IMEnableAPD)(void);
+extern int (*IMDisableAPD)(void);
+extern int (*IMIsAPDEnabled)(int * result);
+extern int (*IMIsAPDEnabledBySysSettings)(int * result);
 
 #ifdef __cplusplus
 }
