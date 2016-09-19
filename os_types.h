@@ -8,12 +8,16 @@ extern "C" {
 #include <gctypes.h>
 
 typedef struct _OSCalendarTime {
-  int32_t tm_sec;
-  int32_t tm_min;
-  int32_t tm_hour;
-  int32_t tm_mday;
-  int32_t tm_mon;
-  int32_t tm_year;
+  int sec;
+  int min;
+  int hour;
+  int mday;
+  int mon;
+  int year;
+  int wday;
+  int yday;
+  int msec;
+  int usec;
 } OSCalendarTime;
 
 #ifdef __cplusplus
