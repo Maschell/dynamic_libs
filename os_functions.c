@@ -51,7 +51,7 @@ EXPORT_DECL(void, OSDetachThread, void * thread);
 EXPORT_DECL(void, OSSleepTicks, u64 ticks);
 EXPORT_DECL(u64, OSGetTick, void);
 EXPORT_DECL(u64, OSGetTime, void);
-EXPORT_DECL(void, OSTicksToCalendarTime, s64 time, OSCalendarTime * calendarTime);
+EXPORT_DECL(void, OSTicksToCalendarTime, u64 time, OSCalendarTime * calendarTime);
 
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
