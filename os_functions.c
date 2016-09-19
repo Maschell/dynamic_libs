@@ -51,6 +51,8 @@ EXPORT_DECL(void, OSDetachThread, void * thread);
 EXPORT_DECL(void, OSSleepTicks, u64 ticks);
 EXPORT_DECL(u64, OSGetTick, void);
 EXPORT_DECL(u64, OSGetTime, void);
+EXPORT_DECL(void, OSTicksToCalendarTime, u64 time, OSCalendarTime * calendarTime);
+
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
@@ -194,6 +196,8 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, OSSleepTicks);
     OS_FIND_EXPORT(coreinit_handle, OSGetTick);
     OS_FIND_EXPORT(coreinit_handle, OSGetTime);
+    OS_FIND_EXPORT(coreinit_handle, OSTicksToCalendarTime);
+
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Mutex functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -26,6 +26,7 @@
 
 #include <gctypes.h>
 #include "common/os_defs.h"
+#include "os_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -93,6 +94,7 @@ extern void (* OSDetachThread)(void * thread);
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
 extern u64 (* OSGetTime)(void);
+extern void (*OSTicksToCalendarTime)(u64 time, OSCalendarTime *calendarTime);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
