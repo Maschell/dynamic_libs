@@ -93,6 +93,7 @@ extern void (* OSDetachThread)(void * thread);
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
 extern u64 (* OSGetTime)(void);
+extern void (*OSTicksToCalendarTime)(s64 time, OSCalendarTime *calendarTime);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
