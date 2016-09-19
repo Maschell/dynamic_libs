@@ -26,6 +26,7 @@
 
 #include <gctypes.h>
 #include "common/os_defs.h"
+#include "os_types.h"
 
 #ifdef __cplusplus
 extern "C" {
