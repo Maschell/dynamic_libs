@@ -56,4 +56,3 @@ void InitAocFunctionPointers(void)
     OSDynLoad_FindExport(aoc_handle, 0, "AOC_DeleteContent", &AOC_DeleteContent);
     OSDynLoad_FindExport(aoc_handle, 0, "AOC_GetPurchaseInfo", &AOC_GetPurchaseInfo);
 }
-

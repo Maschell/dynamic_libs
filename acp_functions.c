@@ -33,10 +33,8 @@ void InitAcquireACP(void)
     OSDynLoad_Acquire("nn_acp.rpl", &acp_handle);
 }
 
-
 void InitACPFunctionPointers(void)
 {
     InitAcquireACP();
     OSDynLoad_FindExport(acp_handle,0,"GetMetaXml__Q2_2nn3acpFP11_ACPMetaXml",&GetMetaXml);
 }
-

@@ -74,9 +74,9 @@ void InitAcquireAX(void)
 void InitAXFunctionPointers(void)
 {
     unsigned int *funcPointer = 0;
-    
+
     InitAcquireAX();
-    
+
     OS_FIND_EXPORT(sound_handle, AXQuit);
     OS_FIND_EXPORT(sound_handle, AXVoiceBegin);
     OS_FIND_EXPORT(sound_handle, AXVoiceEnd);

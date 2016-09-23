@@ -47,4 +47,3 @@ void InitSysFunctionPointers(void)
     OS_FIND_EXPORT(sysapp_handle, SYSCheckTitleExists);
     OS_FIND_EXPORT(sysapp_handle, SYSLaunchTitle);
 }
-

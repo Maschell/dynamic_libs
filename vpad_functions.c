@@ -53,4 +53,3 @@ void InitVPadFunctionPointers(void)
     OS_FIND_EXPORT(vpadbase_handle, VPADBASEGetMotorOnRemainingCount);
     OS_FIND_EXPORT(vpadbase_handle, VPADBASESetMotorOnRemainingCount);
 }
-

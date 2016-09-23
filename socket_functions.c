@@ -37,6 +37,7 @@ EXPORT_DECL(int, listen, s32 s,u32 backlog);
 EXPORT_DECL(int, accept, s32 s,struct sockaddr *addr,s32 *addrlen);
 EXPORT_DECL(int, send, int s, const void *buffer, int size, int flags);
 EXPORT_DECL(int, recv, int s, void *buffer, int size, int flags);
+EXPORT_DECL(int, recvfrom,int sockfd, void *buf, int len, int flags,struct sockaddr *src_addr, int *addrlen);
 EXPORT_DECL(int, sendto, int s, const void *buffer, int size, int flags, const struct sockaddr *dest, int dest_len);
 EXPORT_DECL(int, setsockopt, int s, int level, int optname, void *optval, int optlen);
 EXPORT_DECL(char *, inet_ntoa, struct in_addr in);
@@ -66,6 +67,7 @@ void InitSocketFunctionPointers(void)
     OS_FIND_EXPORT(nsysnet_handle, accept);
     OS_FIND_EXPORT(nsysnet_handle, send);
     OS_FIND_EXPORT(nsysnet_handle, recv);
+    OS_FIND_EXPORT(nsysnet_handle, recvfrom);
     OS_FIND_EXPORT(nsysnet_handle, sendto);
     OS_FIND_EXPORT(nsysnet_handle, setsockopt);
     OS_FIND_EXPORT(nsysnet_handle, inet_ntoa);
@@ -77,4 +79,3 @@ void InitSocketFunctionPointers(void)
 
     socket_lib_init();
 }
-

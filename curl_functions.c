@@ -52,4 +52,3 @@ void InitCurlFunctionPointers(void)
 
     n_curl_global_init(CURL_GLOBAL_ALL);
 }
-

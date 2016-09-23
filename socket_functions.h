@@ -49,6 +49,7 @@ extern unsigned int nsysnet_handle;
 #define SO_REUSEADDR    0x0004
 #define SO_NONBLOCK     0x1016
 #define SO_MYADDR       0x1013
+#define SO_RCVTIMEO	0x1006
 
 #define SOL_SOCKET      -1
 #define MSG_DONTWAIT    32
@@ -88,6 +89,8 @@ extern int (*listen)(s32 s,u32 backlog);
 extern int (*accept)(s32 s,struct sockaddr *addr,s32 *addrlen);
 extern int (*send)(int s, const void *buffer, int size, int flags);
 extern int (*recv)(int s, void *buffer, int size, int flags);
+extern int (*recvfrom)(int sockfd, void *buf, int len, int flags,struct sockaddr *src_addr, int *addrlen);
+
 extern int (*sendto)(int s, const void *buffer, int size, int flags, const struct sockaddr *dest, int dest_len);
 extern int (*setsockopt)(int s, int level, int optname, void *optval, int optlen);
 

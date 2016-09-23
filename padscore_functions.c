@@ -59,4 +59,3 @@ void InitPadScoreFunctionPointers(void)
     KPADInit();
     WPADEnableURCC(1);
 }
-
