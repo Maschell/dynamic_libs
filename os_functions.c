@@ -139,6 +139,14 @@ EXPORT_DECL(int, IMDisableAPD,void);
 EXPORT_DECL(int, IMIsAPDEnabled,int * result);
 EXPORT_DECL(int, IMIsAPDEnabledBySysSettings,int * result);
 
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! IOS functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EXPORT_DECL(int, IOS_Ioctl,int fd, unsigned int request, void *input_buffer,unsigned int input_buffer_len, void *output_buffer, unsigned int output_buffer_len);
+EXPORT_DECL(int, IOS_Open,char *path, unsigned int mode);
+EXPORT_DECL(int, IOS_Close,int fd);
+
 void InitAcquireOS(void)
 {
       //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -245,6 +253,13 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, IMDisableAPD);
     OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabled);
     OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabledBySysSettings);
+
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //! IOS functions
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    OS_FIND_EXPORT(coreinit_handle, IOS_Ioctl);
+    OS_FIND_EXPORT(coreinit_handle, IOS_Open);
+    OS_FIND_EXPORT(coreinit_handle, IOS_Close);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Special non library functions
