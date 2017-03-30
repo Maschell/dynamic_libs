@@ -24,7 +24,7 @@
 #include "common/common.h"
 #include "os_functions.h"
 
-unsigned int coreinit_handle __attribute__((section(".data"))) = 0;
+u32 coreinit_handle __attribute__((section(".data"))) = 0;
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Lib handle functions
@@ -138,6 +138,8 @@ EXPORT_DECL(int, IMEnableAPD,void);
 EXPORT_DECL(int, IMDisableAPD,void);
 EXPORT_DECL(int, IMIsAPDEnabled,int * result);
 EXPORT_DECL(int, IMIsAPDEnabledBySysSettings,int * result);
+
+EXPORT_DECL(s32, OSSendAppSwitchRequest,int param,void* unknown1,void* unknown2);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! IOS functions
@@ -253,6 +255,8 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, IMDisableAPD);
     OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabled);
     OS_FIND_EXPORT(coreinit_handle, IMIsAPDEnabledBySysSettings);
+
+    OS_FIND_EXPORT(coreinit_handle, OSSendAppSwitchRequest);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! IOS functions

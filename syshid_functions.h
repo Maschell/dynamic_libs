@@ -28,7 +28,7 @@
 extern "C" {
 #endif
 
-extern unsigned int syshid_handle;
+extern u32 syshid_handle;
 
 typedef struct
 {

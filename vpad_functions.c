@@ -24,8 +24,8 @@
 #include "os_functions.h"
 #include "vpad_functions.h"
 
-unsigned int vpad_handle __attribute__((section(".data"))) = 0;
-unsigned int vpadbase_handle __attribute__((section(".data"))) = 0;
+u32 vpad_handle __attribute__((section(".data"))) = 0;
+u32 vpadbase_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(void, VPADInit, void);
 EXPORT_DECL(int, VPADRead, int chan, VPADData *buffer, u32 buffer_size, s32 *error);

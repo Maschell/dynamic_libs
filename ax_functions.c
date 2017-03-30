@@ -25,7 +25,7 @@
 #include "os_functions.h"
 #include "ax_functions.h"
 
-unsigned int sound_handle __attribute__((section(".data"))) = 0;
+u32 sound_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(void, AXInitWithParams, u32 * params);
 EXPORT_DECL(void, AXInit, void);

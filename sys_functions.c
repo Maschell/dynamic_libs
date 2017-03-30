@@ -23,7 +23,7 @@
  ***************************************************************************/
 #include "os_functions.h"
 
- unsigned int sysapp_handle __attribute__((section(".data"))) = 0;
+u32 sysapp_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(int, _SYSLaunchTitleByPathFromLauncher, const char* path, int len, int zero);
 EXPORT_DECL(int, SYSRelaunchTitle, int argc, char** argv);

@@ -24,7 +24,7 @@
 #include "os_functions.h"
 #include "curl_functions.h"
 
-unsigned int libcurl_handle __attribute__((section(".data"))) = 0;
+u32 libcurl_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(CURLcode, n_curl_global_init, long flags);
 EXPORT_DECL(CURL *, n_curl_easy_init, void);

@@ -24,7 +24,7 @@
 #include "os_functions.h"
 #include "syshid_functions.h"
 
-unsigned int syshid_handle __attribute__((section(".data"))) = 0;
+u32 syshid_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(int, HIDSetup,void);
 EXPORT_DECL(int, HIDTeardown,void);

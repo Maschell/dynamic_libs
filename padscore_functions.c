@@ -24,7 +24,7 @@
 #include "os_functions.h"
 #include "padscore_functions.h"
 
-unsigned int padscore_handle __attribute__((section(".data"))) = 0;
+u32 padscore_handle __attribute__((section(".data"))) = 0;
 
 EXPORT_DECL(void, KPADInit, void);
 EXPORT_DECL(void, WPADInit, void);

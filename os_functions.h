@@ -65,7 +65,7 @@ extern "C" {
 #define OS_MUTEX_SIZE                   44
 
 /* Handle for coreinit */
-extern unsigned int coreinit_handle;
+extern u32 coreinit_handle;
 void InitOSFunctionPointers(void);
 void InitAcquireOS(void);
 
@@ -167,10 +167,12 @@ extern int (*IMDisableAPD)(void);
 extern int (*IMIsAPDEnabled)(int * result);
 extern int (*IMIsAPDEnabledBySysSettings)(int * result);
 
+extern s32 (*OSSendAppSwitchRequest)(int param,void* unknown1,void* unknown2);
+
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! IOS functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
+
 extern int (*IOS_Ioctl)(int fd, unsigned int request, void *input_buffer,unsigned int input_buffer_len, void *output_buffer, unsigned int output_buffer_len);
 extern int (*IOS_Open)(char *path, unsigned int mode);
 extern int (*IOS_Close)(int fd);
