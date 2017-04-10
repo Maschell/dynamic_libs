@@ -100,12 +100,12 @@ typedef struct
 void InitVPadFunctionPointers(void);
 void InitAcquireVPad(void);
 
-extern int (* VPADRead)(int chan, VPADData *buffer, u32 buffer_size, s32 *error);
-extern int (* VPADGetLcdMode)(int padnum, int *lcdmode);
-extern int (* VPADSetLcdMode)(int padnum, int lcdmode);
+extern s32 (* VPADRead)(s32 chan, VPADData *buffer, u32 buffer_size, s32 *error);
+extern s32 (* VPADGetLcdMode)(s32 padnum, s32 *lcdmode);
+extern s32 (* VPADSetLcdMode)(s32 padnum, s32 lcdmode);
 extern void (* VPADInit)(void);
-extern int (* VPADBASEGetMotorOnRemainingCount)(int lcdmode);
-extern int (* VPADBASESetMotorOnRemainingCount)(int lcdmode,int counter);
+extern s32 (* VPADBASEGetMotorOnRemainingCount)(s32 lcdmode);
+extern s32 (* VPADBASESetMotorOnRemainingCount)(s32 lcdmode,s32 counter);
 
 #ifdef __cplusplus
 }

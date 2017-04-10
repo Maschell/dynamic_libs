@@ -17,7 +17,7 @@ extern "C" {
 #define FS_STATUS_OK                    0
 #define FS_RET_UNSUPPORTED_CMD          0x0400
 #define FS_RET_NO_ERROR                 0x0000
-#define FS_RET_ALL_ERROR                (unsigned int)(-1)
+#define FS_RET_ALL_ERROR                (u32)(-1)
 
 #define FS_STAT_FLAG_IS_DIRECTORY       0x80000000
 

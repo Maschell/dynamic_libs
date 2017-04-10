@@ -43,7 +43,7 @@ void InitAcquirePadScore(void)
 
 void InitPadScoreFunctionPointers(void)
 {
-    unsigned int *funcPointer = 0;
+    u32 *funcPointer = 0;
     InitAcquirePadScore();
 
     OS_FIND_EXPORT(padscore_handle, WPADInit);
