@@ -129,6 +129,22 @@ typedef unsigned char (*exception_callback)(void * interruptedContext);
 extern void (* OSSetExceptionCallback)(u8 exceptionType, exception_callback newCallback);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Memory functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+extern u32 *pMEMAllocFromDefaultHeapEx;
+extern u32 *pMEMAllocFromDefaultHeap;
+extern u32 *pMEMFreeToDefaultHeap;
+
+extern s32 (* MEMGetBaseHeapHandle)(s32 mem_arena);
+extern u32 (* MEMGetAllocatableSizeForFrmHeapEx)(s32 heap, s32 align);
+extern void* (* MEMAllocFromFrmHeapEx)(s32 heap, u32 size, s32 align);
+extern void (* MEMFreeToFrmHeap)(s32 heap, s32 mode);
+extern void *(* MEMAllocFromExpHeapEx)(s32 heap, u32 size, s32 align);
+extern s32 (* MEMCreateExpHeapEx)(void* address, u32 size, unsigned short flags);
+extern void *(* MEMDestroyExpHeap)(s32 heap);
+extern void (* MEMFreeToExpHeap)(s32 heap, void* ptr);
+
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern s32 (* MCP_Open)(void);
