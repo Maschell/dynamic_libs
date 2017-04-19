@@ -268,7 +268,17 @@ void InitOSFunctionPointers(void)
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Special non library functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    if(OS_FIRMWARE == 532 || OS_FIRMWARE == 540)
+    if(OS_FIRMWARE == 550)
+    {
+        EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x01010180);
+        EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0101006C);
+        EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x0100080C);
+        EXPORT_FUNC_WRITE(addr_PrepareTitle_hook, (s32 (*)(s32, s32 *))0xFFF184E4);
+
+        EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19E80);
+        EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13DBC);
+    }
+    else if(OS_FIRMWARE == 532 || OS_FIRMWARE == 540)
     {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100FFA4);                // loader.elf
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100FE90);  // loader.elf
@@ -307,16 +317,6 @@ void InitOSFunctionPointers(void)
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19CC0);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13BFC);
-    }
-	else if(OS_FIRMWARE == 550)
-    {
-        EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x01010180);
-        EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0101006C);
-        EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x0100080C);
-        EXPORT_FUNC_WRITE(addr_PrepareTitle_hook, (s32 (*)(s32, s32 *))0xFFF184E4);
-
-        EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19E80);
-        EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13DBC);
     }
     else if(OS_FIRMWARE == 310)
     {
