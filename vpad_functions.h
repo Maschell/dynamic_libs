@@ -28,10 +28,10 @@
 extern "C" {
 #endif
 
+#include <gctypes.h>
+
 extern u32 vpad_handle;
 extern u32 vpadbase_handle;
-
-#include <gctypes.h>
 
 #define VPAD_BUTTON_A        0x8000
 #define VPAD_BUTTON_B        0x4000
