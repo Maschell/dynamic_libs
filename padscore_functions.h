@@ -150,8 +150,8 @@ typedef struct _KPADData
             f32 lstick_y;
             f32 rstick_x;
             f32 rstick_y;
-            int charging;
-            int wired;
+            s32 charging;
+            s32 wired;
         } pro;
 
         u32 unused_6[20];
@@ -178,6 +178,7 @@ typedef WPADReadData KPADUnifiedWpadData;
 void InitPadScoreFunctionPointers(void);
 void InitAcquirePadScore(void);
 
+typedef void (* wpad_sampling_callback_t)(s32 chan);
 typedef void (* wpad_extension_callback_t)(s32 chan, s32 status);
 typedef void (* wpad_connect_callback_t)(s32 chan, s32 status);
 
