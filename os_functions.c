@@ -101,6 +101,7 @@ EXPORT_DECL(void *, MEMDestroyExpHeap, s32 heap);
 EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
 EXPORT_DECL(void *, OSAllocFromSystem, int size, int alignment);
 EXPORT_DECL(void, OSFreeToSystem, void *addr);
+EXPORT_DECL(int, OSIsAddressValid, void *ptr);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
@@ -272,6 +273,7 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToExpHeap);
     OS_FIND_EXPORT(coreinit_handle, OSAllocFromSystem);
     OS_FIND_EXPORT(coreinit_handle, OSFreeToSystem);
+    OS_FIND_EXPORT(coreinit_handle, OSIsAddressValid);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Other function addresses

@@ -140,6 +140,7 @@ extern void *(* MEMDestroyExpHeap)(s32 heap);
 extern void (* MEMFreeToExpHeap)(s32 heap, void* ptr);
 extern void* (* OSAllocFromSystem)(int size, int alignment);
 extern void (* OSFreeToSystem)(void *addr);
+extern int (* OSIsAddressValid)(void *ptr);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
