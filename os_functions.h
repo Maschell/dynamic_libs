@@ -49,25 +49,20 @@ extern "C" {
 
 #define EXPORT_FUNC_WRITE(func, val)    *(u32*)(((u32)&func) + 0) = (u32)val
 
-#define OS_FIND_EXPORT(handle, func)    funcPointer = 0;                                                                \
-                                        OSDynLoad_FindExport(handle, 0, # func, &funcPointer);                          \
-                                        if(!funcPointer)                                                                \
-                                            OSFatal("Function " # func " is NULL");                                     \
+#define OS_FIND_EXPORT(handle, func)    _os_find_export(handle, # func, &funcPointer);                                  \
                                         EXPORT_FUNC_WRITE(func, funcPointer);
 
 #define OS_FIND_EXPORT_EX(handle, func, func_p)                                                                         \
-                                        funcPointer = 0;                                                                \
-                                        OSDynLoad_FindExport(handle, 0, # func, &funcPointer);                          \
-                                        if(!funcPointer)                                                                \
-                                            OSFatal("Function " # func " is NULL");                                     \
+                                        _os_find_export(handle, # func, &funcPointer);                                  \
                                         EXPORT_FUNC_WRITE(func_p, funcPointer);
 
 #define OS_MUTEX_SIZE                   44
 
 /* Handle for coreinit */
 extern u32 coreinit_handle;
-void InitOSFunctionPointers(void);
-void InitAcquireOS(void);
+extern void _os_find_export(u32 handle, const char *funcName, void *funcPointer);
+extern void InitAcquireOS(void);
+extern void InitOSFunctionPointers(void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Lib handle functions
