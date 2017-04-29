@@ -75,6 +75,11 @@ typedef struct
 
 typedef struct
 {
+    f32 x,y,z;
+} Vec3D;
+
+typedef struct
+{
     u16 x, y;               /* Touch coordinates */
     u16 touched;            /* 1 = Touched, 0 = Not touched */
     u16 invalid;            /* 0 = All valid, 1 = X invalid, 2 = Y invalid, 3 = Both invalid? */
@@ -86,7 +91,10 @@ typedef struct
     u32 btns_d;                  /* Buttons that are pressed at that instant */
     u32 btns_r;                  /* Released buttons */
     Vec2D lstick, rstick;        /* Each contains 4-byte X and Y components */
-    char unknown1c[0x52 - 0x1c]; /* Contains accelerometer and gyroscope data somewhere */
+    char unknown1c[0x38 - 0x1c]; /* Contains accelerometer data somewhere */
+    Vec3D gyro;                  /* Gyro data */
+    Vec3D angle;                 /* Angle data */
+    char unknown50[0x52 - 0x50]; /* Two bytes of unknown data */
     VPADTPData tpdata;           /* Normal touchscreen data */
     VPADTPData tpdata1;          /* Modified touchscreen data 1 */
     VPADTPData tpdata2;          /* Modified touchscreen data 2 */
