@@ -99,6 +99,9 @@ EXPORT_DECL(void *, MEMAllocFromExpHeapEx, s32 heap, u32 size, s32 align);
 EXPORT_DECL(s32 , MEMCreateExpHeapEx, void* address, u32 size, unsigned short flags);
 EXPORT_DECL(void *, MEMDestroyExpHeap, s32 heap);
 EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
+EXPORT_DECL(void *, OSAllocFromSystem, int size, int alignment);
+EXPORT_DECL(void, OSFreeToSystem, void *addr);
+EXPORT_DECL(int, OSIsAddressValid, void *ptr);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
@@ -149,9 +152,40 @@ EXPORT_DECL(s32, IOS_Ioctl,s32 fd, u32 request, void *input_buffer,u32 input_buf
 EXPORT_DECL(s32, IOS_Open,char *path, u32 mode);
 EXPORT_DECL(s32, IOS_Close,s32 fd);
 
+void _os_find_export(u32 handle, const char *funcName, void *funcPointer)
+{
+    OSDynLoad_FindExport(handle, 0, funcName, funcPointer);
+
+    if(!*(u32 *)funcPointer) {
+        /*
+         * This is effectively OSFatal("Function %s is NULL", funcName),
+         * but we can't rely on any library functions like snprintf or
+         * strcpy at this point.
+         *
+         * Buffer bounds are not checked. Beware!
+         */
+        char buf[256], *bufp = buf;
+        const char a[] = "Function ", b[] = " is NULL", *p;
+        int i;
+
+        for (i = 0; i < sizeof(a) - 1; i++)
+            *bufp++ = a[i];
+
+        for (p = funcName; *p; p++)
+            *bufp++ = *p;
+
+        for (i = 0; i < sizeof(b) - 1; i++)
+            *bufp++ = b[i];
+
+        *bufp++ = '\0';
+
+        OSFatal(buf);
+    }
+}
+
 void InitAcquireOS(void)
 {
-      //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Lib handle functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     EXPORT_FUNC_WRITE(OSDynLoad_Acquire, (s32 (*)(const char*, unsigned *))OS_SPECIFICS->addr_OSDynLoad_Acquire);
@@ -237,6 +271,9 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, MEMCreateExpHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMDestroyExpHeap);
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToExpHeap);
+    OS_FIND_EXPORT(coreinit_handle, OSAllocFromSystem);
+    OS_FIND_EXPORT(coreinit_handle, OSFreeToSystem);
+    OS_FIND_EXPORT(coreinit_handle, OSIsAddressValid);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Other function addresses
