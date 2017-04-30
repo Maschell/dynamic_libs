@@ -32,30 +32,30 @@ extern u32 syshid_handle;
 
 typedef struct
 {
-	u32 handle;
-	u32 physical_device_inst;
-	unsigned short vid;
-	unsigned short pid;
-	unsigned char interface_index;
-	unsigned char sub_class;
-	unsigned char protocol;
+    u32 handle;
+    u32 physical_device_inst;
+    unsigned short vid;
+    unsigned short pid;
+    unsigned char interface_index;
+    unsigned char sub_class;
+    unsigned char protocol;
 
-	unsigned short max_packet_size_rx;
-	unsigned short max_packet_size_tx;
+    unsigned short max_packet_size_rx;
+    unsigned short max_packet_size_tx;
 
 } HIDDevice;
 
 typedef struct _HIDClient HIDClient;
 
-#define HID_DEVICE_DETACH	0
-#define HID_DEVICE_ATTACH	1
+#define HID_DEVICE_DETACH   0
+#define HID_DEVICE_ATTACH   1
 
 typedef s32 (*HIDAttachCallback)(HIDClient *p_hc,HIDDevice *p_hd,u32 attach);
 
 struct _HIDClient
 {
-	HIDClient *next;
-	HIDAttachCallback attach_cb;
+    HIDClient *next;
+    HIDAttachCallback attach_cb;
 };
 
 typedef void (*HIDCallback)(u32 handle,s32 error,unsigned char *p_buffer,u32 bytes_transferred,void *p_user);
