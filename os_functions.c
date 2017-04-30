@@ -166,7 +166,7 @@ void _os_find_export(u32 handle, const char *funcName, void *funcPointer)
          */
         char buf[256], *bufp = buf;
         const char a[] = "Function ", b[] = " is NULL", *p;
-        int i;
+        unsigned int i;
 
         for (i = 0; i < sizeof(a) - 1; i++)
             *bufp++ = a[i];
