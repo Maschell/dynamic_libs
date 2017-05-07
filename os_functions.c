@@ -83,6 +83,7 @@ EXPORT_DECL(s32, OSScreenClearBufferEx, u32 bufferNum, u32 temp);
 EXPORT_DECL(s32, OSScreenFlipBuffersEx, u32 bufferNum);
 EXPORT_DECL(s32, OSScreenPutFontEx, u32 bufferNum, u32 posX, u32 posY, const char * buffer);
 EXPORT_DECL(s32, OSScreenEnableEx, u32 bufferNum, s32 enable);
+EXPORT_DECL(u32, OSScreenPutPixelEx, u32 bufferNum, u32 posX, u32 posY, u32 color);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Memory functions
@@ -127,7 +128,7 @@ EXPORT_DECL(void, addr_PrepareTitle_hook, void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Other function addresses
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-EXPORT_DECL(void, DCInvalidateRange, void *buffer, uint32_t length);
+EXPORT_DECL(void, DCInvalidateRange, void *buffer, u32 length);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Energy Saver functions
@@ -226,6 +227,7 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, OSScreenFlipBuffersEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenPutFontEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenEnableEx);
+    OS_FIND_EXPORT(coreinit_handle, OSScreenPutPixelEx);
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Thread functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
