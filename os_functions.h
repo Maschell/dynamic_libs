@@ -87,6 +87,9 @@ extern s32 (* OSIsThreadSuspended)(void *thread);
 extern s32 (* OSJoinThread)(void * thread, s32 * ret_val);
 extern s32 (* OSSetThreadPriority)(void * thread, s32 priority);
 extern void (* OSDetachThread)(void * thread);
+
+extern void * (* OSGetCurrentThread)(void);
+extern const char * (* OSGetThreadName)(void * thread);
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
 extern u64 (* OSGetTime)(void);
