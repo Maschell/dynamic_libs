@@ -76,6 +76,8 @@ EXPORT_DECL(s32, FSBindUnmount, void *pClient, void *pCmd, char *target, s32 err
 EXPORT_DECL(s32, FSMakeQuota, void *pClient, void *pCmd, const char *path,u32 mode, u64 size, s32 errHandling);
 EXPORT_DECL(s32, FSMakeQuotaAsync ,void *pClient, void *pCmd, const char *path,u32 mode, u64 size, s32 errHandling,const void  *asyncParams);
 
+EXPORT_DECL(s32, FSGetCwd,void * client,void * block,char * buffer,u32 bufferSize,u32 flags);
+
 void InitFSFunctionPointers(void)
 {
     u32 *funcPointer = 0;
@@ -132,4 +134,6 @@ void InitFSFunctionPointers(void)
 
     OS_FIND_EXPORT(coreinit_handle, FSMakeQuota);
     OS_FIND_EXPORT(coreinit_handle, FSMakeQuotaAsync);
+
+    OS_FIND_EXPORT(coreinit_handle, FSGetCwd);
 }

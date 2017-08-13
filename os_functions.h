@@ -79,21 +79,33 @@ extern s32 (* OSGetSecurityLevel)(void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Thread functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-extern s32 (* OSCreateThread)(void *thread, s32 (*callback)(s32, void*), s32 argc, void *args, u32 stack, u32 stack_size, s32 priority, u32 attr);
-extern s32 (* OSResumeThread)(void *thread);
-extern s32 (* OSSuspendThread)(void *thread);
-extern s32 (* OSIsThreadTerminated)(void *thread);
-extern s32 (* OSIsThreadSuspended)(void *thread);
-extern s32 (* OSJoinThread)(void * thread, s32 * ret_val);
-extern s32 (* OSSetThreadPriority)(void * thread, s32 priority);
-extern void (* OSDetachThread)(void * thread);
+extern s32 (* OSCreateThread)(OSThread *thread, s32 (*callback)(s32, void*), s32 argc, void *args, u32 stack, u32 stack_size, s32 priority, u32 attr);
+extern s32 (* OSResumeThread)(OSThread *thread);
+extern s32 (* OSSuspendThread)(OSThread *thread);
+extern s32 (* OSIsThreadTerminated)(OSThread *thread);
+extern s32 (* OSIsThreadSuspended)(OSThread *thread);
+extern s32 (* OSJoinThread)(OSThread * thread, s32 * ret_val);
+extern s32 (* OSSetThreadPriority)(OSThread * thread, s32 priority);
+extern void (* OSDetachThread)(OSThread * thread);
+extern OSThread * (* OSGetCurrentThread)(void);
+extern const char * (* OSGetThreadName)(OSThread * thread);
 
-extern void * (* OSGetCurrentThread)(void);
-extern const char * (* OSGetThreadName)(void * thread);
+extern void (* OSGetActiveThreadLink)(OSThread * thread, void* link);
+extern u32 (* OSGetThreadAffinity)(OSThread * thread);
+extern s32 (* OSGetThreadPriority)(OSThread * thread);
+extern void (* OSSetThreadName)(OSThread * thread, const char *name);
+
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
 extern u64 (* OSGetTime)(void);
 extern void (*OSTicksToCalendarTime)(u64 time, OSCalendarTime *calendarTime);
+
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Message functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+extern void(* OSInitMessageQueue)(OSMessageQueue *queue, OSMessage *messages, s32 size);
+extern u32(* OSSendMessage)(OSMessageQueue *queue, OSMessage *message, s32 flags);
+extern u32(* OSReceiveMessage)(OSMessageQueue *queue, OSMessage *message, s32 flags);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Mutex functions
@@ -125,8 +137,10 @@ extern s32 (*OSScreenPutFontEx)(u32 bufferNum, u32 posX, u32 posY, const char * 
 extern s32 (*OSScreenEnableEx)(u32 bufferNum, s32 enable);
 extern u32 (*OSScreenPutPixelEx)(u32 bufferNum, u32 posX, u32 posY, u32 color);
 
-typedef unsigned char (*exception_callback)(void * interruptedContext);
-extern void (* OSSetExceptionCallback)(u8 exceptionType, exception_callback newCallback);
+typedef unsigned char (*exception_callback)(OSContext * interruptedContext);
+extern void * (* OSSetExceptionCallback)(u8 exceptionType, exception_callback newCallback);
+extern void * (* OSSetExceptionCallbackEx)(s32 unknwn,u8 exceptionType, exception_callback newCallback);
+extern void (* OSLoadContext)(OSContext * context);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Memory functions
@@ -172,6 +186,7 @@ extern void (* addr_PrepareTitle_hook)(void);
 //! Other function addresses
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern void (*DCInvalidateRange)(void *buffer, u32 length);
+extern s32 (*OSDynLoad_GetModuleName)(s32 handle, char *name_buffer, s32 *name_buffer_size);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Energy Saver functions

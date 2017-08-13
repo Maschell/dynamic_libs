@@ -89,6 +89,8 @@ extern s32 (* FSBindUnmount)(void *pClient, void *pCmd, char *target, s32 error)
 extern s32 (* FSMakeQuota)( void *pClient, void *pCmd, const char *path,u32 mode, u64 size, s32 errHandling);
 extern s32 (* FSMakeQuotaAsync)(void *pClient, void *pCmd, const char *path,u32 mode, u64 size, s32 errHandling,const void  *asyncParams);
 
+extern s32 (* FSGetCwd)(void * client,void * block,char * buffer,u32 bufferSize,u32 flags);
+
 
 #ifdef __cplusplus
 }

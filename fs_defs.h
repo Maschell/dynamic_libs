@@ -31,6 +31,14 @@ extern "C" {
 #define FS_CLIENT_SIZE                  0x1700
 #define FS_CMD_BLOCK_SIZE               0xA80
 
+struct FSClient {
+    u8 buffer[FS_CLIENT_SIZE];
+};
+
+struct FSCmdBlock {
+    u8 buffer[FS_CMD_BLOCK_SIZE];
+};
+
 typedef struct
 {
     uint32_t flag;
