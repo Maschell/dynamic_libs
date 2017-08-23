@@ -165,6 +165,7 @@ EXPORT_DECL(s32, OSSendAppSwitchRequest,s32 param,void* unknown1,void* unknown2)
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 EXPORT_DECL(s32, IOS_Ioctl,s32 fd, u32 request, void *input_buffer,u32 input_buffer_len, void *output_buffer, u32 output_buffer_len);
+EXPORT_DECL(s32, IOS_IoctlAsync,s32 fd, u32 request, void *input_buffer,u32 input_buffer_len, void *output_buffer, u32 output_buffer_len, void *cb, void *cbarg);
 EXPORT_DECL(s32, IOS_Open,char *path, u32 mode);
 EXPORT_DECL(s32, IOS_Close,s32 fd);
 
@@ -333,6 +334,7 @@ void InitOSFunctionPointers(void)
     //! IOS functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     OS_FIND_EXPORT(coreinit_handle, IOS_Ioctl);
+    OS_FIND_EXPORT(coreinit_handle, IOS_IoctlAsync);
     OS_FIND_EXPORT(coreinit_handle, IOS_Open);
     OS_FIND_EXPORT(coreinit_handle, IOS_Close);
 

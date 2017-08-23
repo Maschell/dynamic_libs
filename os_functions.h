@@ -208,6 +208,7 @@ extern s32 (*OSSendAppSwitchRequest)(s32 param,void* unknown1,void* unknown2);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 extern s32 (*IOS_Ioctl)(s32 fd, u32 request, void *input_buffer,u32 input_buffer_len, void *output_buffer, u32 output_buffer_len);
+extern s32 (*IOS_IoctlAsync)(s32 fd, u32 request, void *input_buffer,u32 input_buffer_len, void *output_buffer, u32 output_buffer_len, void *cb, void *cbarg);
 extern s32 (*IOS_Open)(char *path, u32 mode);
 extern s32 (*IOS_Close)(s32 fd);
 
