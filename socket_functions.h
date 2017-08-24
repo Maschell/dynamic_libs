@@ -33,6 +33,7 @@ extern u32 nsysnet_handle;
 #include <gctypes.h>
 
 #define INADDR_ANY      0
+#define INADDR_BROADCAST 0xFFFFFFFF
 
 #define AF_INET         2
 
@@ -47,6 +48,7 @@ extern u32 nsysnet_handle;
 
 #define SOL_SOCKET      -1
 #define SO_REUSEADDR    0x0004
+#define SO_BROADCAST    0x0020      // broadcast
 #define SO_NONBLOCK     0x1016
 #define SO_MYADDR       0x1013
 #define SO_RCVTIMEO	0x1006
