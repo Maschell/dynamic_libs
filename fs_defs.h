@@ -7,6 +7,7 @@
 extern "C" {
 #endif
 
+#include "os_types.h"
 
 /* FS defines and types */
 #define FS_MAX_LOCALPATH_SIZE           511
@@ -15,6 +16,7 @@ extern "C" {
 #define FS_MAX_ARGPATH_SIZE             FS_MAX_FULLPATH_SIZE
 
 #define FS_STATUS_OK                    0
+#define FS_STATUS_EOF                   -2
 #define FS_RET_UNSUPPORTED_CMD          0x0400
 #define FS_RET_NO_ERROR                 0x0000
 #define FS_RET_ALL_ERROR                (u32)(-1)
@@ -65,9 +67,24 @@ typedef struct
 {
     FSAsyncCallback userCallback;
     void            *userContext;
-    void            *ioMsgQueue;
+    OSMessageQueue  *ioMsgQueue;
 } FSAsyncParams;
 
+typedef struct{
+    void*               data; // pointer to a FSAsyncResult;
+    u32                 unkwn1;
+    u32                 unkwn2;
+    u32                 unkwn3; // always 0x08
+} __attribute__((packed)) FSMessage;
+
+typedef struct FSAsyncResult_{
+    FSAsyncParams       userParams;
+    FSMessage           ioMsg;
+
+    struct FSClient *          client;
+    struct FSCmdBlock *        block;
+    u32                 result;
+} FSAsyncResult;
 
 #ifdef __cplusplus
 }
