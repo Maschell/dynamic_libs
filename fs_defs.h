@@ -33,13 +33,13 @@ extern "C" {
 #define FS_CLIENT_SIZE                  0x1700
 #define FS_CMD_BLOCK_SIZE               0xA80
 
-struct FSClient {
+typedef struct FSClient_ {
     u8 buffer[FS_CLIENT_SIZE];
-};
+}FSClient;
 
-struct FSCmdBlock {
+typedef struct FSCmdBlock_ {
     u8 buffer[FS_CMD_BLOCK_SIZE];
-};
+} FSCmdBlock;
 
 typedef struct
 {
@@ -62,7 +62,7 @@ typedef struct
     char        name[FS_MAX_ENTNAME_SIZE];
 } FSDirEntry;
 
-typedef void (*FSAsyncCallback)(void *pClient, void *pCmd, int result, void *context);
+typedef void (*FSAsyncCallback)(FSClient * pClient, FSCmdBlock * pCmd, int result, void *context);
 typedef struct
 {
     FSAsyncCallback userCallback;
@@ -81,8 +81,8 @@ typedef struct FSAsyncResult_{
     FSAsyncParams       userParams;
     FSMessage           ioMsg;
 
-    struct FSClient *          client;
-    struct FSCmdBlock *        block;
+    FSClient *          client;
+    FSCmdBlock *        block;
     u32                 result;
 } FSAsyncResult;
 
