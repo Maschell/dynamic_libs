@@ -123,6 +123,7 @@ extern void (* OSGetArgcArgv)(s32* argc, char*** argv);
 extern void (* __Exit)(void);
 extern void (* OSFatal)(const char* msg);
 extern void (* DCFlushRange)(const void *addr, u32 length);
+extern void (* DCStoreRange)(const void *addr, u32 length);
 extern void (* ICInvalidateRange)(const void *addr, u32 length);
 extern void* (* OSEffectiveToPhysical)(const void*);
 extern s32 (* __os_snprintf)(char* s, s32 n, const char * format, ...);
