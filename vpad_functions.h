@@ -68,6 +68,13 @@ extern u32 vpadbase_handle;
 #define VPAD_MASK_EMULATED_STICKS       0x7F800000
 #define VPAD_MASK_BUTTONS               ~VPAD_MASK_EMULATED_STICKS
 
+typedef enum VPADTPResolution
+{
+    VPAD_TP_1920x1080,
+    VPAD_TP_1280x720,
+    VPAD_TP_854x480
+} VPADTPResolution;
+
 typedef struct
 {
     f32 x,y;
@@ -80,6 +87,11 @@ typedef struct
 
 typedef struct
 {
+    Vec3D X,Y,Z;
+} VPADOrientation;
+
+typedef struct
+{
     u16 x, y;               /* Touch coordinates */
     u16 touched;            /* 1 = Touched, 0 = Not touched */
     u16 invalid;            /* 0 = All valid, 1 = X invalid, 2 = Y invalid, 3 = Both invalid? */
@@ -87,28 +99,47 @@ typedef struct
 
 typedef struct
 {
+    s16 offsetX;
+    s16 offsetY;
+    f32 scaleX;
+    f32 scaleY;
+} VPADTPCalibrationParam;
+
+typedef struct
+{
     u32 btns_h;                  /* Held buttons */
     u32 btns_d;                  /* Buttons that are pressed at that instant */
     u32 btns_r;                  /* Released buttons */
     Vec2D lstick, rstick;        /* Each contains 4-byte X and Y components */
-    char unknown1c[0x38 - 0x1c]; /* Contains accelerometer data somewhere */
+    Vec3D acc;                   /* Status of DRC accelerometer */
+    f32 acc_magnitude;           /* Accelerometer magnitude */
+    f32 acc_variation;           /* Accelerometer variation */
+    Vec2D acc_vertical;          /* Vertical */
     Vec3D gyro;                  /* Gyro data */
     Vec3D angle;                 /* Angle data */
-    char unknown50[0x52 - 0x50]; /* Two bytes of unknown data */
+    s8 error;                    /* Error */
     VPADTPData tpdata;           /* Normal touchscreen data */
     VPADTPData tpdata1;          /* Modified touchscreen data 1 */
     VPADTPData tpdata2;          /* Modified touchscreen data 2 */
-    char unknown6a[0xa0 - 0x6a];
-    u8 volume;
+    VPADOrientation dir;         /* Orientation in three-dimensional space */
+    BOOL headphone;              /* Set to TRUE if headphones are plugged in, FALSE otherwise */
+    Vec3D mag;                   /* Magnetometer data */
+    u8 volume;                   /* 0 to 255 */
     u8 battery;                  /* 0 to 6 */
+    u8 mic;                      /* Microphone status */
     u8 unk_volume;               /* One less than volume */
-    char unknowna4[0xac - 0xa4];
+    u8 paddings[7];
 } VPADData;
 
 void InitVPadFunctionPointers(void);
 void InitAcquireVPad(void);
 
 extern s32 (* VPADRead)(s32 chan, VPADData *buffer, u32 buffer_size, s32 *error);
+extern s16 (* VPADCalcTPCalibrationParam) (VPADTPCalibrationParam* param, u16 rawX1, u16 rawY1, u16 x1, u16 y1, u16 rawX2, u16 rawY2, u16 x2, u16 y2);
+extern void (* VPADSetTPCalibrationParam) (s32 chan, const VPADTPCalibrationParam param);
+extern void (* VPADGetTPCalibrationParam) (s32 chan, VPADTPCalibrationParam* param);
+extern void (* VPADGetTPCalibratedPoint) (s32 chan, VPADTPData *disp, const VPADTPData *raw);
+extern void (* VPADGetTPCalibratedPointEx) (s32 chan, VPADTPResolution tpReso, VPADTPData *disp, const VPADTPData *raw);
 extern s32 (* VPADGetLcdMode)(s32 padnum, s32 *lcdmode);
 extern s32 (* VPADSetLcdMode)(s32 padnum, s32 lcdmode);
 extern void (* VPADInit)(void);
