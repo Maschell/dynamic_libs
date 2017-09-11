@@ -75,6 +75,7 @@ extern s32 (* OSDynLoad_FindExport)(u32 handle, s32 isdata, const char *symbol, 
 //! Security functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern s32 (* OSGetSecurityLevel)(void);
+extern s32 (* OSForceFullRelaunch)(void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Thread functions
@@ -94,6 +95,7 @@ extern void (* OSGetActiveThreadLink)(OSThread * thread, void* link);
 extern u32 (* OSGetThreadAffinity)(OSThread * thread);
 extern s32 (* OSGetThreadPriority)(OSThread * thread);
 extern void (* OSSetThreadName)(OSThread * thread, const char *name);
+extern s32 (* OSGetCoreId)(void);
 
 extern void (* OSSleepTicks)(u64 ticks);
 extern u64 (* OSGetTick)(void);
