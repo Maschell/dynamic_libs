@@ -94,6 +94,7 @@ EXPORT_DECL(s32, __os_snprintf, char* s, s32 n, const char * format, ...);
 EXPORT_DECL(s32 *, __gh_errno_ptr, void);
 
 EXPORT_DECL(void, OSScreenInit, void);
+EXPORT_DECL(void, OSScreenShutdown, void);
 EXPORT_DECL(u32, OSScreenGetBufferSizeEx, u32 bufferNum);
 EXPORT_DECL(s32, OSScreenSetBufferEx, u32 bufferNum, void * addr);
 EXPORT_DECL(s32, OSScreenClearBufferEx, u32 bufferNum, u32 temp);
@@ -244,6 +245,7 @@ void InitOSFunctionPointers(void)
     OSDynLoad_FindExport(coreinit_handle, 0, "_Exit", &__Exit);
 
     OS_FIND_EXPORT(coreinit_handle, OSScreenInit);
+    OS_FIND_EXPORT(coreinit_handle, OSScreenShutdown);
     OS_FIND_EXPORT(coreinit_handle, OSScreenGetBufferSizeEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenSetBufferEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenClearBufferEx);

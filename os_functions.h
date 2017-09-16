@@ -132,6 +132,7 @@ extern s32 (* __os_snprintf)(char* s, s32 n, const char * format, ...);
 extern s32 * (* __gh_errno_ptr)(void);
 
 extern void (*OSScreenInit)(void);
+extern void (*OSScreenShutdown)(void);
 extern u32 (*OSScreenGetBufferSizeEx)(u32 bufferNum);
 extern s32 (*OSScreenSetBufferEx)(u32 bufferNum, void * addr);
 extern s32 (*OSScreenClearBufferEx)(u32 bufferNum, u32 temp);
