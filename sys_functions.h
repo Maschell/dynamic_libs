@@ -38,8 +38,10 @@ void InitAcquireSys(void);
 extern int(*_SYSLaunchTitleByPathFromLauncher)(const char* path, s32 len, s32 zero);
 extern int (* SYSRelaunchTitle)(s32 argc, char** argv);
 extern int (* SYSLaunchMenu)(void);
+extern int (* _SYSLaunchMenuWithCheckingAccount)(unsigned char slot);
 extern int (* SYSCheckTitleExists)(u64 titleId);
 extern int (* SYSLaunchTitle)(u64 titleId);
+extern int (* SYSLaunchSettings)(s32 unk);
 
 
 #ifdef __cplusplus
