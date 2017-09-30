@@ -95,6 +95,7 @@ EXPORT_DECL(s32, __os_snprintf, char* s, s32 n, const char * format, ...);
 EXPORT_DECL(s32 *, __gh_errno_ptr, void);
 
 EXPORT_DECL(void, OSScreenInit, void);
+EXPORT_DECL(void, OSScreenShutdown, void);
 EXPORT_DECL(u32, OSScreenGetBufferSizeEx, u32 bufferNum);
 EXPORT_DECL(s32, OSScreenSetBufferEx, u32 bufferNum, void * addr);
 EXPORT_DECL(s32, OSScreenClearBufferEx, u32 bufferNum, u32 temp);
@@ -118,9 +119,9 @@ EXPORT_DECL(void *, MEMAllocFromExpHeapEx, s32 heap, u32 size, s32 align);
 EXPORT_DECL(s32 , MEMCreateExpHeapEx, void* address, u32 size, unsigned short flags);
 EXPORT_DECL(void *, MEMDestroyExpHeap, s32 heap);
 EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
-EXPORT_DECL(void *, OSAllocFromSystem, int size, int alignment);
+EXPORT_DECL(void *, OSAllocFromSystem, u32 size, s32 alignment);
 EXPORT_DECL(void, OSFreeToSystem, void *addr);
-EXPORT_DECL(int, OSIsAddressValid, void *ptr);
+EXPORT_DECL(s32, OSIsAddressValid, void *ptr);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
@@ -246,6 +247,7 @@ void InitOSFunctionPointers(void)
     OSDynLoad_FindExport(coreinit_handle, 0, "_Exit", &__Exit);
 
     OS_FIND_EXPORT(coreinit_handle, OSScreenInit);
+    OS_FIND_EXPORT(coreinit_handle, OSScreenShutdown);
     OS_FIND_EXPORT(coreinit_handle, OSScreenGetBufferSizeEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenSetBufferEx);
     OS_FIND_EXPORT(coreinit_handle, OSScreenClearBufferEx);

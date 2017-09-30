@@ -133,6 +133,7 @@ extern s32 (* __os_snprintf)(char* s, s32 n, const char * format, ...);
 extern s32 * (* __gh_errno_ptr)(void);
 
 extern void (*OSScreenInit)(void);
+extern void (*OSScreenShutdown)(void);
 extern u32 (*OSScreenGetBufferSizeEx)(u32 bufferNum);
 extern s32 (*OSScreenSetBufferEx)(u32 bufferNum, void * addr);
 extern s32 (*OSScreenClearBufferEx)(u32 bufferNum, u32 temp);
@@ -161,9 +162,9 @@ extern void *(* MEMAllocFromExpHeapEx)(s32 heap, u32 size, s32 align);
 extern s32 (* MEMCreateExpHeapEx)(void* address, u32 size, unsigned short flags);
 extern void *(* MEMDestroyExpHeap)(s32 heap);
 extern void (* MEMFreeToExpHeap)(s32 heap, void* ptr);
-extern void* (* OSAllocFromSystem)(int size, int alignment);
+extern void* (* OSAllocFromSystem)(u32 size, s32 alignment);
 extern void (* OSFreeToSystem)(void *addr);
-extern int (* OSIsAddressValid)(void *ptr);
+extern s32 (* OSIsAddressValid)(void *ptr);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
