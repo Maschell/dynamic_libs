@@ -239,7 +239,7 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, DCStoreRange);
     OS_FIND_EXPORT(coreinit_handle, ICInvalidateRange);
     OS_FIND_EXPORT(coreinit_handle, OSEffectiveToPhysical);
-	OS_FIND_EXPORT(coreinit_handle, __OSPhysicalToEffectiveUncached);
+    OS_FIND_EXPORT(coreinit_handle, __OSPhysicalToEffectiveUncached);
     OS_FIND_EXPORT(coreinit_handle, __os_snprintf);
     OS_FIND_EXPORT(coreinit_handle, __gh_errno_ptr);
 
