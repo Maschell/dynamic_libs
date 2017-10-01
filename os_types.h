@@ -29,10 +29,10 @@ extern "C" {
 
 typedef struct OSThread_ OSThread;
 
-struct OSThreadLink {
+typedef struct OSThreadLink_ {
     OSThread *next;
     OSThread *prev;
-};
+}  OSThreadLink;
 
 typedef struct OSThreadQueue_ {
 	OSThread *head;
@@ -136,7 +136,8 @@ struct OSThread_ {
     int suspend;
     int priority;
 
-    char _[0x394 - 0x330];
+    char _[0x394 - 0x330 - sizeof(OSThreadLink)];
+	OSThreadLink linkActive;
 
     void *stackBase;
     void *stackEnd;
