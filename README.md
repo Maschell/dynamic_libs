@@ -25,6 +25,13 @@ InitProcUIFunctionPointers();
 
 Check out the header for more information.
 
+# Dependencies
+
+All needed dependencies are in the "libs" folder of this repository. Extract the "portlibs.zip" archive into your devkitPro directory.  
+The archive includes:
+
+- The "curl" header
+
 # Credits
 
 - Based on the dynamic_libs from dimok.
