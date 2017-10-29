@@ -21,22 +21,28 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __NTAG_FUNCTIONS_H_
-#define __NTAG_FUNCTIONS_H_
+#ifndef __NN_ACT_FUNCTIONS_H_
+#define __NN_ACT_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
-extern u32 ntag_handle;
+extern u32 nn_act_handle;
 
-void InitNTAGFunctionPointers(void);
-void InitAcquireNTAG(void);
+extern void(* nn_act_Initialize)(void);
+extern void(* nn_act_Finalize)(void);
+extern u8(* nn_act_GetSlotNo)(void);
+extern u8(* nn_act_GetDefaultAccount)(void);
+extern u32(*nn_act_GetPersistentIdEx)(u8 slot);
+
+void InitACTFunctionPointers(void);
+void InitAcquireACT(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __NTAG_FUNCTIONS_H_
+#endif // __NN_ACT_FUNCTIONS_H_

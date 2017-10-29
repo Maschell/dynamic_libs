@@ -21,28 +21,40 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __NN_ACT_FUNCTIONS_H_
-#define __NN_ACT_FUNCTIONS_H_
+#ifndef __AOC_FUNCTIONS_H_
+#define __AOC_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
-extern u32 nn_act_handle;
+extern u32 aoc_handle;
 
-extern void(* nn_act_Initialize)(void);
-extern void(* nn_act_Finalize)(void);
-extern u8(* nn_act_GetSlotNo)(void);
-extern u8(* nn_act_GetDefaultAccount)(void);
-extern u32(*nn_act_GetPersistentIdEx)(u8 slot);
+#define AOC_TITLE_SIZE              104
 
-void InitACTFunctionPointers(void);
-void InitAcquireACT(void);
+typedef struct {
+    u64     title_ID;
+    u32     group_ID;
+    u16     version;
+    char    path[88];
+} AOC_TitleListType;
 
+
+void InitAocFunctionPointers(void);
+void InitAcquireAoc(void);
+
+extern s32 (* AOC_Initialize)(void);
+extern s32 (* AOC_Finalize)(void);
+extern u32 (* AOC_CalculateWorkBufferSize)(u32 num_titles);
+extern s32 (* AOC_ListTitle)(u32 * num_titles, void * titles, u32 max_titles, void * buffer, u32 buffer_size);
+extern s32 (* AOC_OpenTitle)(char* aoc_path, void * title, void * buffer, u32 buffer_size);
+extern s32 (* AOC_CloseTitle)(void * title);
+extern s32 (* AOC_DeleteContent)(u64 title_id, u16 contentIndexes[], u32 numberOfContent, void * buffer, u32 buffer_size);
+extern s32 (* AOC_GetPurchaseInfo)(u32 * bResult, u64 title_id, u16 contentIndexes[], u32 numberOfContent, void * buffer, u32 buffer_size);
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __NN_ACT_FUNCTIONS_H_
+#endif // __AOC_FUNCTIONS_H_

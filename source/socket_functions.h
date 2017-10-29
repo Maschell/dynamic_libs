@@ -28,9 +28,9 @@
 extern "C" {
 #endif
 
-extern u32 nsysnet_handle;
+#include "os_types.h"
 
-#include <gctypes.h>
+extern u32 nsysnet_handle;
 
 extern u32 hostIpAddress;
 

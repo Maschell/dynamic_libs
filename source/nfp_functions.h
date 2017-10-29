@@ -21,31 +21,22 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __CURL_FUNCTIONS_H_
-#define __CURL_FUNCTIONS_H_
+#ifndef __NFP_FUNCTIONS_H_
+#define __NFP_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
-#include "socket_functions.h"
-typedef int socklen_t;
-#include <curl/curl.h>
-#include <curl/easy.h>
+#include "os_types.h"
 
-void InitCurlFunctionPointers(void);
-void InitAcquireCurl(void);
+extern u32 nfp_handle;
 
-extern CURLcode (* n_curl_global_init)(long flags);
-extern CURL * (* n_curl_easy_init)(void);
-extern CURLcode (* n_curl_easy_setopt)(CURL *curl, CURLoption option, ...);
-extern CURLcode (* n_curl_easy_perform)(CURL *curl);
-extern void (* n_curl_easy_cleanup)(CURL *curl);
-extern CURLcode (* n_curl_easy_getinfo)(CURL *curl, CURLINFO info, ...);
+void InitNFPFunctionPointers(void);
+void InitAcquireNFP(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __CURL_FUNCTIONS_H_
+#endif // __NFP_FUNCTIONS_H_

@@ -21,27 +21,22 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __PROC_UI_FUNCTIONS_H_
-#define __PROC_UI_FUNCTIONS_H_
+#ifndef __NTAG_FUNCTIONS_H_
+#define __NTAG_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
-extern u32 proc_ui_handle;
+extern u32 ntag_handle;
 
-typedef u32 (*ProcUICallback)(void*);
-
-void InitProcUIFunctionPointers(void);
-void InitAcquireProcUI(void);
-
-extern u32 (*ProcUIInForeground)(void);
-extern void (*ProcUIRegisterCallback)(u32 type,ProcUICallback callback,void* param, u32 unkwn);
+void InitNTAGFunctionPointers(void);
+void InitAcquireNTAG(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __PROC_UI_FUNCTIONS_H_
+#endif // __NTAG_FUNCTIONS_H_

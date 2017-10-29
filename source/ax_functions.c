@@ -21,7 +21,6 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#include "common/common.h"
 #include "os_functions.h"
 #include "ax_functions.h"
 

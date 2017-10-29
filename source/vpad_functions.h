@@ -28,7 +28,7 @@
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
 extern u32 vpad_handle;
 extern u32 vpadbase_handle;

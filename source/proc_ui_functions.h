@@ -21,25 +21,27 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __NN_SAVE_FUNCTIONS_H_
-#define __NN_SAVE_FUNCTIONS_H_
+#ifndef __PROC_UI_FUNCTIONS_H_
+#define __PROC_UI_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
-extern u32 nn_save_handle;
+extern u32 proc_ui_handle;
 
-extern void(*SAVEInit)(void);
-extern int(*SAVEOpenFile)(void *pClient, void *pCmd, unsigned char user, const char *path, const char *mode, int *fd, int errHandling);
+typedef u32 (*ProcUICallback)(void*);
 
-void InitSaveFunctionPointers(void);
-void InitAcquireSave(void);
+void InitProcUIFunctionPointers(void);
+void InitAcquireProcUI(void);
+
+extern u32 (*ProcUIInForeground)(void);
+extern void (*ProcUIRegisterCallback)(u32 type,ProcUICallback callback,void* param, u32 unkwn);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __NN_SAVE_FUNCTIONS_H_
+#endif // __PROC_UI_FUNCTIONS_H_

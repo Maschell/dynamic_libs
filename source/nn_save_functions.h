@@ -21,31 +21,25 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  ***************************************************************************/
-#ifndef __SYS_FUNCTIONS_H_
-#define __SYS_FUNCTIONS_H_
+#ifndef __NN_SAVE_FUNCTIONS_H_
+#define __NN_SAVE_FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <gctypes.h>
+#include "os_types.h"
 
-extern u32 sysapp_handle;
+extern u32 nn_save_handle;
 
-void InitSysFunctionPointers(void);
-void InitAcquireSys(void);
+extern void(*SAVEInit)(void);
+extern int(*SAVEOpenFile)(void *pClient, void *pCmd, unsigned char user, const char *path, const char *mode, int *fd, int errHandling);
 
-extern s32(*_SYSLaunchTitleByPathFromLauncher)(const char* path, s32 len, s32 zero);
-extern s32 (* SYSRelaunchTitle)(s32 argc, char** argv);
-extern s32 (* SYSLaunchMenu)(void);
-extern s32 (* _SYSLaunchMenuWithCheckingAccount)(unsigned char slot);
-extern s32 (* SYSCheckTitleExists)(u64 titleId);
-extern s32 (* SYSLaunchTitle)(u64 titleId);
-extern s32 (* SYSLaunchSettings)(s32 unk);
-
+void InitSaveFunctionPointers(void);
+void InitAcquireSave(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __SYS_FUNCTIONS_H_
+#endif // __NN_SAVE_FUNCTIONS_H_
