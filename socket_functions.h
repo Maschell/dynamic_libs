@@ -28,6 +28,8 @@
 extern "C" {
 #endif
 
+#include <gctypes.h>
+
 extern u32 nsysnet_handle;
 
 #include <gctypes.h>
@@ -38,6 +40,10 @@ extern u32 hostIpAddress;
 #define INADDR_BROADCAST 0xFFFFFFFF
 
 #define AF_INET         2
+
+#define SHUT_RD         0
+#define SHUT_WR         1
+#define SHUT_RDWR 2
 
 #define SOCK_STREAM     1
 #define SOCK_DGRAM      2
@@ -87,6 +93,7 @@ extern s32 (*socket_lib_init)(void);
 extern s32 (*socket_lib_finish)(void);
 extern s32 (*socket)(s32 domain, s32 type, s32 protocol);
 extern s32 (*socketclose)(s32 s);
+extern s32 (*shutdown)(s32 s, s32 how);
 extern s32 (*connect)(s32 s, void *addr, s32 addrlen);
 extern s32 (*bind)(s32 s,struct sockaddr *name,s32 namelen);
 extern s32 (*listen)(s32 s,u32 backlog);
