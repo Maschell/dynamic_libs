@@ -143,6 +143,7 @@ EXPORT_DECL(s32, OSIsAddressValid, const void *ptr);
 EXPORT_DECL(s32, MCP_Open, void);
 EXPORT_DECL(s32, MCP_Close, s32 handle);
 EXPORT_DECL(s32, MCP_GetOwnTitleInfo, s32 handle, void * data);
+EXPORT_DECL(void*, MCP_GetDeviceId, s32 handle, u32 * id);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Loader functions (not real rpl)
@@ -327,6 +328,7 @@ void InitOSFunctionPointers(void)
     OS_FIND_EXPORT(coreinit_handle, MCP_Open);
     OS_FIND_EXPORT(coreinit_handle, MCP_Close);
     OS_FIND_EXPORT(coreinit_handle, MCP_GetOwnTitleInfo);
+    OS_FIND_EXPORT(coreinit_handle, MCP_GetDeviceId);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Memory functions

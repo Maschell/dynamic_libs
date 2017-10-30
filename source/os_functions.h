@@ -226,6 +226,7 @@ extern s32 (* OSIsAddressValid)(const void *ptr);
 extern s32 (* MCP_Open)(void);
 extern s32 (* MCP_Close)(s32 handle);
 extern s32 (* MCP_GetOwnTitleInfo)(s32 handle, void * data);
+extern void* (* MCP_GetDeviceId)(s32 handle, u32 * id);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! LOADER functions
