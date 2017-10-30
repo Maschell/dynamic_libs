@@ -220,8 +220,7 @@ void _os_find_export(u32 handle, const char *funcName, void *funcPointer)
     }
 }
 
-void InitAcquireOS(void)
-{
+void InitAcquireOS(void){
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Lib handle functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -231,8 +230,7 @@ void InitAcquireOS(void)
     OSDynLoad_Acquire("coreinit.rpl", &coreinit_handle);
 }
 
-void InitOSFunctionPointers(void)
-{
+void InitOSFunctionPointers(void){
     u32 *funcPointer = 0;
 
     InitAcquireOS();
