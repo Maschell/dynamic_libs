@@ -32,8 +32,6 @@ extern "C" {
 
 extern u32 nsysnet_handle;
 
-#include <gctypes.h>
-
 extern u32 hostIpAddress;
 
 #define INADDR_ANY      0
@@ -43,7 +41,7 @@ extern u32 hostIpAddress;
 
 #define SHUT_RD         0
 #define SHUT_WR         1
-#define SHUT_RDWR 2
+#define SHUT_RDWR       2
 
 #define SOCK_STREAM     1
 #define SOCK_DGRAM      2
