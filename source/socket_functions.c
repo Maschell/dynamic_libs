@@ -32,6 +32,7 @@ EXPORT_DECL(s32, socket_lib_init, void);
 EXPORT_DECL(s32, socket_lib_finish, void);
 EXPORT_DECL(s32, socket, s32 domain, s32 type, s32 protocol);
 EXPORT_DECL(s32, socketclose, s32 s);
+EXPORT_DECL(s32, shutdown, s32 s, s32 how);
 EXPORT_DECL(s32, connect, s32 s, void *addr, s32 addrlen);
 EXPORT_DECL(s32, bind, s32 s,struct sockaddr *name,s32 namelen);
 EXPORT_DECL(s32, listen, s32 s,u32 backlog);
@@ -75,6 +76,7 @@ void InitSocketFunctionPointers(void){
     OS_FIND_EXPORT(nsysnet_handle, socketlasterr);
     OS_FIND_EXPORT(nsysnet_handle, socket);
     OS_FIND_EXPORT(nsysnet_handle, socketclose);
+    OS_FIND_EXPORT(nsysnet_handle, shutdown);
     OS_FIND_EXPORT(nsysnet_handle, connect);
     OS_FIND_EXPORT(nsysnet_handle, bind);
     OS_FIND_EXPORT(nsysnet_handle, listen);
