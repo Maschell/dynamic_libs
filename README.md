@@ -8,6 +8,17 @@ Install this static library into your portlibs folder via:
 make && make install
 ```
 
+Link the application with:
+```
+-ldynamiclibs
+```
+
+You also need to add the include path to your Makefile. Example:
+
+```
+export INCLUDE	:= [...] -I$(PORTLIBS)/include
+```
+
 ## Usage
 
 To be able to use this library, you need to include the header initialize the OS functions.
