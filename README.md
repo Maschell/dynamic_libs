@@ -1,5 +1,5 @@
 # Dynamic libs for WiiU homebrew.
-[![Build Status](https://travis-ci.org/Maschell/dynamic_libs.svg?branch=master)](https://travis-ci.org/Maschell/dynamic_libs)
+[![Build Status](https://travis-ci.org/Maschell/dynamic_libs.svg?branch=lib)](https://travis-ci.org/Maschell/dynamic_libs)
 
 ## Compiling
 
