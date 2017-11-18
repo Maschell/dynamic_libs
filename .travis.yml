@@ -1,0 +1,29 @@
+language: c
+sudo: false
+
+os:
+  - linux
+
+env:
+  global:
+    - DEVKITPRO=$HOME/devkitPro
+    - DEVKITPPC=${DEVKITPRO}/devkitPPC
+
+cache:
+  directories:
+    - ${DEVKITPRO}
+
+addons:
+  apt:
+    packages:
+    - p7zip-full
+
+before_install:
+  - wget https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitPPCupdate.pl
+
+install:
+  - perl devkitPPCupdate.pl
+  - 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
+
+script:
+  - make
