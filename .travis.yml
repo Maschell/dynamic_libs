@@ -19,7 +19,7 @@ addons:
     - p7zip-full
 
 before_install:
-  - wget https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitPPCupdate.pl
+  - wget https://raw.githubusercontent.com/Maschell/dynamic_libs/lib/other/devkitPPCupdatePPCr29.pl
 
 install:
   - perl devkitPPCupdate.pl
