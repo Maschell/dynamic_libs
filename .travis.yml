@@ -22,7 +22,7 @@ before_install:
   - wget https://raw.githubusercontent.com/Maschell/dynamic_libs/lib/other/devkitPPCupdatePPCr29.pl
 
 install:
-  - perl devkitPPCupdate.pl
+  - perl devkitPPCupdatePPCr29.pl
   - 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
 
 script:
