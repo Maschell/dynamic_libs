@@ -29,7 +29,7 @@ LIB		:=	lib
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-CFLAGS	= -g -Os -Wall -D__wiiu__ $(MACHDEP) $(INCLUDE)
+CFLAGS	= -g -O2 -Wall -D__wiiu__ $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
 ASFLAGS	:=	-g
