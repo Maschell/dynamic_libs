@@ -164,6 +164,7 @@ EXPORT_DECL(void, addr_PrepareTitle_hook, void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EXPORT_DECL(void, DCInvalidateRange, void *buffer, u32 length);
 EXPORT_DECL(s32, OSDynLoad_GetModuleName, s32 handle, char *name_buffer, s32 *name_buffer_size);
+EXPORT_DECL(s32, OSIsHomeButtonMenuEnabled, void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Energy Saver functions
@@ -352,6 +353,7 @@ void InitOSFunctionPointers(void){
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     OS_FIND_EXPORT(coreinit_handle, DCInvalidateRange);
     OS_FIND_EXPORT(coreinit_handle, OSDynLoad_GetModuleName);
+    OS_FIND_EXPORT(coreinit_handle, OSIsHomeButtonMenuEnabled);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Energy Saver functions

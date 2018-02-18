@@ -247,6 +247,7 @@ extern void (* addr_PrepareTitle_hook)(void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern void (*DCInvalidateRange)(void *buffer, u32 length);
 extern s32 (*OSDynLoad_GetModuleName)(s32 handle, char *name_buffer, s32 *name_buffer_size);
+extern s32 (*OSIsHomeButtonMenuEnabled) (void);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Energy Saver functions
