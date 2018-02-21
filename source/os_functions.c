@@ -127,7 +127,8 @@ EXPORT_VAR(u32 *, pMEMFreeToDefaultHeap);
 
 EXPORT_DECL(void *, MEMAllocFromAllocator, void * allocator, u32 size);
 EXPORT_DECL(void, MEMFreeToAllocator, void * allocator, void* address);
-EXPORT_DECL(s32, MEMGetBaseHeapHandle, s32 mem_arena);
+EXPORT_DECL(s32, MEMGetBaseHeapHandle, s32 mem_arena);                                 
+EXPORT_DECL(u32, MEMGetAllocatableSizeForExpHeapEx, s32 heap, s32 align);
 EXPORT_DECL(u32, MEMGetAllocatableSizeForFrmHeapEx, s32 heap, s32 align);
 EXPORT_DECL(void *, MEMAllocFromFrmHeapEx, s32 heap, u32 size, s32 align);
 EXPORT_DECL(void, MEMFreeToFrmHeap, s32 heap, s32 mode);
@@ -138,6 +139,8 @@ EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
 EXPORT_DECL(void *, OSAllocFromSystem, u32 size, s32 alignment);
 EXPORT_DECL(void, OSFreeToSystem, void *addr);
 EXPORT_DECL(s32, OSIsAddressValid, const void *ptr);
+
+
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
@@ -343,6 +346,7 @@ void InitOSFunctionPointers(void){
     OS_FIND_EXPORT(coreinit_handle, MEMAllocFromAllocator);
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToAllocator);
     OS_FIND_EXPORT(coreinit_handle, MEMGetBaseHeapHandle);
+    OS_FIND_EXPORT(coreinit_handle, MEMGetAllocatableSizeForExpHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMGetAllocatableSizeForFrmHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMAllocFromFrmHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToFrmHeap);

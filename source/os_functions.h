@@ -211,6 +211,7 @@ extern u32 *pMEMFreeToDefaultHeap;
 extern void* (* MEMAllocFromAllocator) (void * allocator, u32 size);
 extern void (* MEMFreeToAllocator) (void * allocator, void* address);
 extern s32 (* MEMGetBaseHeapHandle)(s32 mem_arena);
+extern u32 (* MEMGetAllocatableSizeForExpHeapEx)(s32 heap, s32 align);
 extern u32 (* MEMGetAllocatableSizeForFrmHeapEx)(s32 heap, s32 align);
 extern void* (* MEMAllocFromFrmHeapEx)(s32 heap, u32 size, s32 align);
 extern void (* MEMFreeToFrmHeap)(s32 heap, s32 mode);
