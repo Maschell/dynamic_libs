@@ -127,7 +127,7 @@ EXPORT_VAR(u32 *, pMEMFreeToDefaultHeap);
 
 EXPORT_DECL(void *, MEMAllocFromAllocator, void * allocator, u32 size);
 EXPORT_DECL(void, MEMFreeToAllocator, void * allocator, void* address);
-EXPORT_DECL(s32, MEMGetBaseHeapHandle, s32 mem_arena);                                 
+EXPORT_DECL(s32, MEMGetBaseHeapHandle, s32 mem_arena);
 EXPORT_DECL(u32, MEMGetAllocatableSizeForExpHeapEx, s32 heap, s32 align);
 EXPORT_DECL(u32, MEMGetAllocatableSizeForFrmHeapEx, s32 heap, s32 align);
 EXPORT_DECL(void *, MEMAllocFromFrmHeapEx, s32 heap, u32 size, s32 align);
