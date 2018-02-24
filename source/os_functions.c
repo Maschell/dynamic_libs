@@ -128,6 +128,7 @@ EXPORT_VAR(u32 *, pMEMFreeToDefaultHeap);
 EXPORT_DECL(void *, MEMAllocFromAllocator, void * allocator, u32 size);
 EXPORT_DECL(void, MEMFreeToAllocator, void * allocator, void* address);
 EXPORT_DECL(s32, MEMGetBaseHeapHandle, s32 mem_arena);                                 
+EXPORT_DECL(u32, MEMGetTotalFreeSizeForExpHeap, s32 heap);
 EXPORT_DECL(u32, MEMGetAllocatableSizeForExpHeapEx, s32 heap, s32 align);
 EXPORT_DECL(u32, MEMGetAllocatableSizeForFrmHeapEx, s32 heap, s32 align);
 EXPORT_DECL(void *, MEMAllocFromFrmHeapEx, s32 heap, u32 size, s32 align);
@@ -139,7 +140,8 @@ EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
 EXPORT_DECL(void *, OSAllocFromSystem, u32 size, s32 alignment);
 EXPORT_DECL(void, OSFreeToSystem, void *addr);
 EXPORT_DECL(s32, OSIsAddressValid, const void *ptr);
-
+EXPORT_DECL(s32, MEMFindParentHeap, s32 heap);
+EXPORT_DECL(s32, OSGetMemBound, s32 type, u32 * startAddress, u32 * size);
 
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -346,6 +348,7 @@ void InitOSFunctionPointers(void){
     OS_FIND_EXPORT(coreinit_handle, MEMAllocFromAllocator);
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToAllocator);
     OS_FIND_EXPORT(coreinit_handle, MEMGetBaseHeapHandle);
+    OS_FIND_EXPORT(coreinit_handle, MEMGetTotalFreeSizeForExpHeap);
     OS_FIND_EXPORT(coreinit_handle, MEMGetAllocatableSizeForExpHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMGetAllocatableSizeForFrmHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMAllocFromFrmHeapEx);
@@ -357,6 +360,8 @@ void InitOSFunctionPointers(void){
     OS_FIND_EXPORT(coreinit_handle, OSAllocFromSystem);
     OS_FIND_EXPORT(coreinit_handle, OSFreeToSystem);
     OS_FIND_EXPORT(coreinit_handle, OSIsAddressValid);
+    OS_FIND_EXPORT(coreinit_handle, MEMFindParentHeap);
+    OS_FIND_EXPORT(coreinit_handle, OSGetMemBound);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Other function addresses
