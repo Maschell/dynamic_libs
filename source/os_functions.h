@@ -201,6 +201,8 @@ extern bool (*DisassemblePPCOpcode)(u32 *opcode, char *outputBuffer, u32 bufferS
 extern void *(*OSGetSymbolName)(u32 addr, u8 *symbolName, u32 nameBufSize);
 extern int (*OSIsDebuggerInitialized)(void);
 
+extern bool (*OSGetSharedData)(u32 type, u32 unk_r4, u8 *addr, u32 *size);
+
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Memory functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

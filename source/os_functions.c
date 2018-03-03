@@ -118,6 +118,8 @@ EXPORT_DECL(bool, DisassemblePPCOpcode, u32 *, char *, u32, DisasmGetSym, u32);
 EXPORT_DECL(void*, OSGetSymbolName, u32, u8 *, u32);
 EXPORT_DECL(int, OSIsDebuggerInitialized, void);
 
+EXPORT_DECL(bool, OSGetSharedData, u32 type, u32 unk_r4, u8 *addr, u32 *size);
+
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Memory functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -285,6 +287,8 @@ void InitOSFunctionPointers(void){
     OS_FIND_EXPORT(coreinit_handle, DisassemblePPCOpcode);
     OS_FIND_EXPORT(coreinit_handle, OSGetSymbolName);
     OS_FIND_EXPORT(coreinit_handle, OSIsDebuggerInitialized);
+
+    OS_FIND_EXPORT(coreinit_handle, OSGetSharedData);
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Thread functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
