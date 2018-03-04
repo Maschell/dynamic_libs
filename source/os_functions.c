@@ -150,7 +150,7 @@ EXPORT_DECL(s32, OSGetMemBound, s32 type, u32 * startAddress, u32 * size);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EXPORT_DECL(s32, MCP_Open, void);
 EXPORT_DECL(s32, MCP_Close, s32 handle);
-EXPORT_DECL(s32, MCP_GetOwnTitleInfo, s32 handle, void * data);
+EXPORT_DECL(s32, MCP_GetOwnTitleInfo, s32 handle, MCPTitleListType * data);
 EXPORT_DECL(void*, MCP_GetDeviceId, s32 handle, u32 * id);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

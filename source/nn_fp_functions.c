@@ -22,18 +22,22 @@
  * distribution.
  ***************************************************************************/
 #include "os_functions.h"
-#include "acp_functions.h"
+#include "nn_fp_functions.h"
 
-u32 acp_handle __attribute__((section(".data"))) = 0;
+u32 nn_fp_handle __attribute__((section(".data"))) = 0;
 
-EXPORT_DECL(void, GetMetaXml, ACPMetaXml * _ACPMetaXml);
+EXPORT_DECL(void, nn_fp_GetMyPresence, void *);
+EXPORT_DECL(void, nn_fp_Initialize, void);
 
-void InitAcquireACP(void){
+void InitAcquireFp(void){
     if(coreinit_handle == 0){ InitAcquireOS(); };
-    OSDynLoad_Acquire("nn_acp.rpl", &acp_handle);
+    OSDynLoad_Acquire("nn_fp.rpl", &nn_fp_handle);
 }
 
-void InitACPFunctionPointers(void){
-    InitAcquireACP();
-    OSDynLoad_FindExport(acp_handle,0,"GetMetaXml__Q2_2nn3acpFP11_ACPMetaXml",&GetMetaXml);
+void InitFpFunctionPointers(void){
+    u32 *funcPointer = 0;
+    InitAcquireFp();
+    
+    OS_FIND_EXPORT_EX(nn_fp_handle, GetMyPresence__Q2_2nn2fpFPQ3_2nn2fp10MyPresence, nn_fp_GetMyPresence)
+    OS_FIND_EXPORT_EX(nn_fp_handle, Initialize__Q2_2nn2fpFv, nn_fp_Initialize)
 }

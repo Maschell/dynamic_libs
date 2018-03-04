@@ -231,7 +231,7 @@ extern s32 (* OSGetMemBound)(s32 type, u32 * startAddress, u32 * size);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern s32 (* MCP_Open)(void);
 extern s32 (* MCP_Close)(s32 handle);
-extern s32 (* MCP_GetOwnTitleInfo)(s32 handle, void * data);
+extern s32 (* MCP_GetOwnTitleInfo)(s32 handle, MCPTitleListType * data);
 extern void* (* MCP_GetDeviceId)(s32 handle, u32 * id);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

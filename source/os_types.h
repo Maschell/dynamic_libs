@@ -197,6 +197,18 @@ typedef struct _OSCalendarTime {
 } OSCalendarTime;
 
 
+typedef struct MCPTitleListType{
+   u64 titleId;
+   u8 unknwn[4];
+   s8 path[56];
+   u32 appType;
+   u8 unknwn1[0x54 - 0x48];
+   u8 device;
+   u8 unknwn2;
+   s8 indexedDevice[10];
+   u8 unk0x60;
+} MCPTitleListType;
+
 #ifdef __cplusplus
 }
 #endif

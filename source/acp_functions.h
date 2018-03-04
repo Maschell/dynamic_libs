@@ -30,7 +30,14 @@ extern "C" {
 
 #include "os_types.h"
 
+
+typedef struct ACPMetaXml_
+{
+   u8 data[0x3440];
+}ACPMetaXml;
+
 extern u32 acp_handle;
+extern void (*GetMetaXml)(ACPMetaXml * _ACPMetaXml);
 
 void InitACPFunctionPointers(void);
 void InitAcquireACP(void);
