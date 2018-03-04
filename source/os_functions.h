@@ -201,6 +201,8 @@ extern bool (*DisassemblePPCOpcode)(u32 *opcode, char *outputBuffer, u32 bufferS
 extern void *(*OSGetSymbolName)(u32 addr, u8 *symbolName, u32 nameBufSize);
 extern int (*OSIsDebuggerInitialized)(void);
 
+extern bool (*OSGetSharedData)(u32 type, u32 unk_r4, u8 *addr, u32 *size);
+
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Memory functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -231,7 +233,9 @@ extern s32 (* OSGetMemBound)(s32 type, u32 * startAddress, u32 * size);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern s32 (* MCP_Open)(void);
 extern s32 (* MCP_Close)(s32 handle);
-extern s32 (* MCP_GetOwnTitleInfo)(s32 handle, MCPTitleListType * data);
+extern s32 (* MCP_TitleCount)(s32 handle);
+extern s32 (* MCP_TitleList)(s32 handle, s32 *res, void *data, s32 count);
+extern s32 (* MCP_GetOwnTitleInfo)(s32 handle, void *data);
 extern void* (* MCP_GetDeviceId)(s32 handle, u32 * id);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
