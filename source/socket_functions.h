@@ -77,10 +77,9 @@ struct sockaddr_in {
     char sin_zero[8];
 };
 
-struct sockaddr
-{
-   unsigned short sa_family;
-   char sa_data[14];
+struct sockaddr {
+    unsigned short sa_family;
+    char sa_data[14];
 };
 
 

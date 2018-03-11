@@ -204,8 +204,7 @@ EXPORT_DECL(s32, IOS_IoctlAsync,s32 fd, u32 request, void *input_buffer,u32 inpu
 EXPORT_DECL(s32, IOS_Open,char *path, u32 mode);
 EXPORT_DECL(s32, IOS_Close,s32 fd);
 
-void _os_find_export(u32 handle, const char *funcName, void *funcPointer)
-{
+void _os_find_export(u32 handle, const char *funcName, void *funcPointer) {
     OSDynLoad_FindExport(handle, 0, funcName, funcPointer);
 
     if(!*(u32 *)funcPointer) {
@@ -235,7 +234,7 @@ void _os_find_export(u32 handle, const char *funcName, void *funcPointer)
     }
 }
 
-void InitAcquireOS(void){
+void InitAcquireOS(void) {
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Lib handle functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -245,7 +244,7 @@ void InitAcquireOS(void){
     OSDynLoad_Acquire("coreinit.rpl", &coreinit_handle);
 }
 
-void InitOSFunctionPointers(void){
+void InitOSFunctionPointers(void) {
     u32 *funcPointer = 0;
 
     InitAcquireOS();
@@ -406,8 +405,7 @@ void InitOSFunctionPointers(void){
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Special non library functions
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    if(OS_FIRMWARE == 550)
-    {
+    if(OS_FIRMWARE == 550) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x01010180);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0101006C);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x0100080C);
@@ -415,9 +413,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19E80);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13DBC);
-    }
-    else if(OS_FIRMWARE == 532 || OS_FIRMWARE == 540)
-    {
+    } else if(OS_FIRMWARE == 532 || OS_FIRMWARE == 540) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100FFA4);                // loader.elf
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100FE90);  // loader.elf
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010007EC);              // loader.elf
@@ -425,9 +421,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19D00);           // loader.elf
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13C3C);         // loader.elf
-    }
-    else if(OS_FIRMWARE == 500 || OS_FIRMWARE == 510)
-    {
+    } else if(OS_FIRMWARE == 500 || OS_FIRMWARE == 510) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100FBC4);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100FAB0);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010007EC);
@@ -435,9 +429,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19D00);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13C3C);
-    }
-    else if(OS_FIRMWARE == 410)
-    {
+    } else if(OS_FIRMWARE == 410) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100F78C);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100F678);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010007F8);
@@ -445,9 +437,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19CC0);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13BFC);
-    }
-    else if(OS_FIRMWARE == 400) //same for 402 and 403
-    {
+    } else if(OS_FIRMWARE == 400) { //same for 402 and 403
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100F78C);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100F678);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010007F8);
@@ -455,9 +445,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19CC0);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE13BFC);
-    }
-    else if(OS_FIRMWARE == 310)
-    {
+    } else if(OS_FIRMWARE == 310) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100C4E4);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100C3D4);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010004D8);
@@ -465,9 +453,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19340);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE1329C);
-    }
-    else if(OS_FIRMWARE == 300)
-    {
+    } else if(OS_FIRMWARE == 300) {
         EXPORT_FUNC_WRITE(LiWaitIopComplete, (s32 (*)(s32, s32 *))0x0100C4E4);
         EXPORT_FUNC_WRITE(LiWaitIopCompleteWithInterrupts, (s32 (*)(s32, s32 *))0x0100C3D4);
         EXPORT_FUNC_WRITE(addr_LiWaitOneChunk, (s32 (*)(s32, s32 *))0x010004D8);
@@ -475,9 +461,7 @@ void InitOSFunctionPointers(void){
 
         EXPORT_FUNC_WRITE(addr_sgIsLoadingBuffer, (s32 (*)(s32, s32 *))0xEFE19340);
         EXPORT_FUNC_WRITE(addr_gDynloadInitialized, (s32 (*)(s32, s32 *))0xEFE1329C);
-    }
-    else
-    {
+    } else {
         OSFatal("Missing all OS specific addresses.");
     }
 }

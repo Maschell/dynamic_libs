@@ -52,12 +52,14 @@ EXPORT_DECL(s32, NSSLWrite, s32 connection, const void* buf, s32 len,s32 * writt
 EXPORT_DECL(s32, NSSLRead, s32 connection, const void* buf, s32 len,s32 * read);
 EXPORT_DECL(s32, NSSLCreateConnection, s32 context, const char* host, s32 hotlen,s32 options,s32 sock,s32 block);
 
-void InitAcquireSocket(void){
-    if(coreinit_handle == 0){ InitAcquireOS(); };
+void InitAcquireSocket(void) {
+    if(coreinit_handle == 0) {
+        InitAcquireOS();
+    };
     OSDynLoad_Acquire("nsysnet.rpl", &nsysnet_handle);
 }
 
-void InitSocketFunctionPointers(void){
+void InitSocketFunctionPointers(void) {
     u32 *funcPointer = 0;
 
     InitAcquireSocket();

@@ -26,12 +26,14 @@
 
 u32 nfp_handle __attribute__((section(".data"))) = 0;
 
-void InitAcquireNFP(void){
-    if(coreinit_handle == 0){ InitAcquireOS(); };
+void InitAcquireNFP(void) {
+    if(coreinit_handle == 0) {
+        InitAcquireOS();
+    };
     OSDynLoad_Acquire("nn_nfp.rpl", &nfp_handle);
 }
 
-void InitNFPFunctionPointers(void){
+void InitNFPFunctionPointers(void) {
     // u32 *funcPointer = 0;
     InitAcquireNFP();
 }
