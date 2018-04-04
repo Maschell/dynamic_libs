@@ -138,6 +138,7 @@ EXPORT_DECL(void *, MEMAllocFromFrmHeapEx, s32 heap, u32 size, s32 align);
 EXPORT_DECL(void, MEMFreeToFrmHeap, s32 heap, s32 mode);
 EXPORT_DECL(void *, MEMAllocFromExpHeapEx, s32 heap, u32 size, s32 align);
 EXPORT_DECL(s32 , MEMCreateExpHeapEx, void* address, u32 size, unsigned short flags);
+EXPORT_DECL(s32 , MEMCreateFrmHeapEx, void* address, u32 size, unsigned short flags);
 EXPORT_DECL(void *, MEMDestroyExpHeap, s32 heap);
 EXPORT_DECL(void, MEMFreeToExpHeap, s32 heap, void* ptr);
 EXPORT_DECL(void *, OSAllocFromSystem, u32 size, s32 alignment);
@@ -363,6 +364,7 @@ void InitOSFunctionPointers(void) {
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToFrmHeap);
     OS_FIND_EXPORT(coreinit_handle, MEMAllocFromExpHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMCreateExpHeapEx);
+    OS_FIND_EXPORT(coreinit_handle, MEMCreateFrmHeapEx);
     OS_FIND_EXPORT(coreinit_handle, MEMDestroyExpHeap);
     OS_FIND_EXPORT(coreinit_handle, MEMFreeToExpHeap);
     OS_FIND_EXPORT(coreinit_handle, OSAllocFromSystem);
