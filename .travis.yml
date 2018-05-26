@@ -6,11 +6,14 @@ dist: trusty
 
 env:
   global:
-    - DEVKITPRO=$HOME/devkitPro
+    - DEVKITPRO=/opt/devkitpro    
+    - DEVKITPPC=/opt/devkitpro/devkitPPC
+    - PORTLIBREPOS=$HOME/portlibrepos
 
 cache:
   directories:
     - "$HOME/.local"
+    - "$DEVKITPRO"
 
 addons:
   apt:
@@ -22,10 +25,10 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb -O /tmp/devkitpro-pacman.deb; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg -i /tmp/devkitpro-pacman.deb; fi
   - yes | sudo dkp-pacman -Syu devkitPPC
-  - export DEVKITPPC=/opt/devkitpro/devkitPPC
 
 install:
+  - rm -rf $DEVKITPRO/portlibs
   - 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
 
 script:
-  - make
+  - make && make install
