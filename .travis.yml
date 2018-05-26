@@ -1,8 +1,8 @@
-language: c
-sudo: false
+language: cpp
 
-os:
-  - linux
+os: linux
+sudo: false
+dist: trusty
 
 env:
   global:
@@ -10,7 +10,7 @@ env:
 
 cache:
   directories:
-    - ${DEVKITPRO}
+    - "$HOME/.local"
 
 addons:
   apt:
