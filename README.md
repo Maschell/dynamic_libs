@@ -44,6 +44,14 @@ The archive includes:
 
 - The "curl" header
 
+# Use the prebuilt files from a Docker image.
+The image `wiiulegacy/dynamic_libs` on [Docker Hub](https://hub.docker.com/r/wiiulegacy/dynamic_libs/) provides a prebuilt library in the `/artifacts` directory. Copy it into your DevkitPPC portlibs folder.  
+
+Example:  
+```
+COPY --from=wiiulegacy/dynamic_libs:0.1 /artifacts $DEVKITPRO/portlibs
+```
+
 # Credits
 
 - Based on the dynamic_libs from dimok.
