@@ -1,10 +1,13 @@
 FROM wiiulegacy/core:0.1
 
-RUN rm -rf $DEVKITPRO/portlibs
-RUN git clone https://github.com/Maschell/dynamic_libs -b lib
+MAINTAINER Maschell <maschell@gmx.de>
+
+RUN git clone https://github.com/Maschell/dynamic_libs -b lib && cd dynamic_libs && git checkout v0.1
 WORKDIR dynamic_libs
-RUN git checkout -b v0.1
-RUN 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
-RUN make && make install
-WORKDIR ..
-RUN rm -rf dynamic_libs
+
+RUN rm -rf $DEVKITPRO/portlibs && 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
+
+RUN make && make install && \
+	cp -r ${DEVKITPRO}/portlibs /artifacts
+	
+WORKDIR /artifacts
