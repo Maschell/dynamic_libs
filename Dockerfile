@@ -2,7 +2,7 @@ FROM wiiulegacy/core:0.1
 
 MAINTAINER Maschell <maschell@gmx.de>
 
-RUN git clone https://github.com/Maschell/dynamic_libs -b lib && cd dynamic_libs && git checkout v0.1
+RUN git clone https://github.com/Maschell/dynamic_libs -b lib && cd dynamic_libs
 WORKDIR dynamic_libs
 
 RUN rm -rf $DEVKITPRO/portlibs && 7z x -y ./libs/portlibs.zip -o${DEVKITPRO}
