@@ -1,0 +1,11 @@
+dynamic_libs.pc:
+prefix=@PREFIX@
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: dynamic_libs
+Description: Dynamic libs for WiiU homebrew
+Version: @VERSION@
+
+Cflags: -I${includedir}/dynamic_libs
+Libs: -L${libdir} -ldynamiclibs
